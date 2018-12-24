@@ -43,7 +43,8 @@ namespace ProjectEuler
                 }
                 else
                 {
-                    fibonacciNumbers.Add(1);
+                    const int startingNumber = 1;
+                    fibonacciNumbers.Add(startingNumber);
                 }
             }
 
