@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using ProjectEuler.FibonacciNumbers;
+using Xunit;
 
 namespace ProjectEuler.Tests
 {
@@ -9,14 +10,19 @@ namespace ProjectEuler.Tests
     /// </summary>
     public class EvenFibonacciNumbersSumTests
     {
+        private readonly EvenFibonacciNumbersSum _sut;
+
+        public EvenFibonacciNumbersSumTests()
+        {
+            var fibonacciNumberHandler = new FibonacciNumberHandler();
+            _sut = new EvenFibonacciNumbersSum(fibonacciNumberHandler);
+        }
+
         [Fact]
         public void ShouldCalculateTheValueOfEvenFibonacciNumber()
         {
-            //Given
-            var sut = new EvenFibonacciNumbersSum();
-
             //When
-            var result = sut.Calculate(10);
+            var result = _sut.Calculate(10);
 
             //Then
             const int expectResult = 44; //2 + 8 + 34

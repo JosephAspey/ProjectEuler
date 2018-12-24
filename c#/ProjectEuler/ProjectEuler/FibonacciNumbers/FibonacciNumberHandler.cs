@@ -1,25 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ProjectEuler
+namespace ProjectEuler.FibonacciNumbers
 {
-    public class EvenFibonacciNumbersSum
+    public class FibonacciNumberHandler : IFibonacciNumberHandler
     {
-        public int Calculate(int maxNumber)
-        {
-            var fibonacciNumbers = GetFibonacciNumbers(maxNumber);
-            var evenFibonacciNumbers = GetEvenFibonacciNumbers(fibonacciNumbers);
-
-            var evenFibonacciNumbersSum = 0;
-            if (evenFibonacciNumbers.Any())
-            {
-                evenFibonacciNumbersSum = evenFibonacciNumbers.Sum();
-            }
-
-            return evenFibonacciNumbersSum;
-        }
-
-        private List<int> GetFibonacciNumbers(int maxNumber)
+        public List<int> GetFibonacciNumbers(int maxNumber)
         {
             var fibonacciNumbers = new List<int>();
 
@@ -51,7 +37,7 @@ namespace ProjectEuler
             return fibonacciNumbers;
         }
 
-        private static List<int> GetEvenFibonacciNumbers(IReadOnlyCollection<int> fibonacciNumbers)
+        public List<int> GetEvenFibonacciNumbers(IReadOnlyCollection<int> fibonacciNumbers)
         {
             var evenFibonacciNumbers = new List<int>();
 
@@ -67,6 +53,6 @@ namespace ProjectEuler
 
             return evenFibonacciNumbers;
         }
-       
+
     }
 }
