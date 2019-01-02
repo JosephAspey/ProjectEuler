@@ -7,15 +7,19 @@ namespace ProjectEuler.Tests.FibonacciNumbers
 {
     public class FibonacciNumberHandlerTests
     {
+        private readonly FibonacciNumberHandler _sut;
+
+        public FibonacciNumberHandlerTests()
+        {
+            _sut = new FibonacciNumberHandler();
+        }
+
         [Fact]
         public void ShouldReturnOne()
         {
-            //Given
-            var sut = new FibonacciNumberHandler();
-
             //When
             const int maxListCount = 1;
-            var result = sut.GetFibonacciNumbers(maxListCount);
+            var result = _sut.GetFibonacciNumbers(maxListCount);
 
             //Then
             const int expectedValue = 1;
@@ -25,12 +29,10 @@ namespace ProjectEuler.Tests.FibonacciNumbers
         [Fact]
         public void ShouldNotReturnAnyFibonacciNumbersWhenTheMaxNumberIsZero()
         {
-            //Given
-            var sut = new FibonacciNumberHandler();
 
             //When
             const int maxListCount = 0;
-            var result = sut.GetFibonacciNumbers(maxListCount);
+            var result = _sut.GetFibonacciNumbers(maxListCount);
 
             //Then
             Assert.Empty(result);
@@ -39,12 +41,9 @@ namespace ProjectEuler.Tests.FibonacciNumbers
         [Fact]
         public void ShouldReturnOneAndTwo()
         {
-            //Given
-            var sut = new FibonacciNumberHandler();
-
             //When
             const int maxListCount = 2;
-            var result = sut.GetFibonacciNumbers(maxListCount);
+            var result = _sut.GetFibonacciNumbers(maxListCount);
 
             //Then
             Assert.Contains(1, result);
@@ -54,12 +53,9 @@ namespace ProjectEuler.Tests.FibonacciNumbers
         [Fact]
         public void ShouldReturnASequnceThatAdditionsThePreviousTwoNumbersInTheCollection()
         {
-            //Given
-            var sut = new FibonacciNumberHandler();
-
             //When
             const int maxListCount = 5;
-            var result = sut.GetFibonacciNumbers(maxListCount);
+            var result = _sut.GetFibonacciNumbers(maxListCount);
 
             //Then
             Assert.Contains(1, result);
@@ -72,9 +68,6 @@ namespace ProjectEuler.Tests.FibonacciNumbers
         [Fact]
         public void ShouldGetEvenNumbers()
         {
-            //Given
-            var sut = new FibonacciNumberHandler();
-
             //When
             var fibonacciNumbers = new List<int>
             {
@@ -86,7 +79,7 @@ namespace ProjectEuler.Tests.FibonacciNumbers
                 13
             };
 
-            var result = sut.GetEvenNumbers(fibonacciNumbers);
+            var result = _sut.GetEvenNumbers(fibonacciNumbers);
 
             //Then
             Assert.Contains(2, result);
@@ -99,9 +92,6 @@ namespace ProjectEuler.Tests.FibonacciNumbers
         [Fact]
         public void ShouldNotContainOddNumbers()
         {
-            //Given
-            var sut = new FibonacciNumberHandler();
-
             //When
             var fibonacciNumbers = new List<int>
             {
@@ -110,7 +100,7 @@ namespace ProjectEuler.Tests.FibonacciNumbers
                 3,
             };
 
-            var result = sut.GetEvenNumbers(fibonacciNumbers);
+            var result = _sut.GetEvenNumbers(fibonacciNumbers);
 
             //Then
             Assert.DoesNotContain(1, result);
