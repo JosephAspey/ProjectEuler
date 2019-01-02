@@ -5,25 +5,18 @@ namespace ProjectEuler.FibonacciNumbers
 {
     public class FibonacciNumberHandler : IFibonacciNumberHandler
     {
-        public List<int> GetFibonacciNumbers(int maxNumber)
+        public List<int> GetFibonacciNumbers(int maxListCount)
         {
             var fibonacciNumbers = new List<int>();
 
-            for (var i = 1; i < maxNumber; i++)
+            for (var i = 1; i <= maxListCount; i++)
             {
                 if (fibonacciNumbers.Any())
                 {
-                    var previousNumnerIndex = i - 2;
-                    var previousNumber = fibonacciNumbers[previousNumnerIndex];
+                    var previousNumber = GetPreviousNumberInSequence(i, fibonacciNumbers);
+                    var secondPreviousNumber = GetSecoundPreviousNumberInSequence(i, fibonacciNumbers);
 
-                    var previousNumber2Index = i - 3;
-                    var previousNumber2 = 1;
-                    if (previousNumber2Index >= 1)
-                    {
-                        previousNumber2 = fibonacciNumbers[previousNumber2Index];
-                    }
-
-                    var fibonacciNumber = previousNumber + previousNumber2;
+                    var fibonacciNumber = previousNumber + secondPreviousNumber;
 
                     fibonacciNumbers.Add(fibonacciNumber);
                 }
@@ -34,24 +27,55 @@ namespace ProjectEuler.FibonacciNumbers
                 }
             }
 
+            AddOneToFibonacciSeqence(maxListCount, fibonacciNumbers);
+
             return fibonacciNumbers;
         }
 
-        public List<int> GetEvenFibonacciNumbers(IReadOnlyCollection<int> fibonacciNumbers)
+        private static int GetSecoundPreviousNumberInSequence(int index, IReadOnlyList<int> fibonacciNumbers)
         {
-            var evenFibonacciNumbers = new List<int>();
-
-            if (!fibonacciNumbers.Any()) return evenFibonacciNumbers;
-
-            foreach (var fibonacciNumber in fibonacciNumbers)
+            var secondPrevioudNumberIndex = index - 3;
+            var secondPreviousNumber = 1;
+            if (secondPrevioudNumberIndex >= 1)
             {
-                if (fibonacciNumber % 2 == 0)
+                secondPreviousNumber = fibonacciNumbers[secondPrevioudNumberIndex];
+            }
+
+            return secondPreviousNumber;
+        }
+
+        private static int GetPreviousNumberInSequence(int index, IReadOnlyList<int> fibonacciNumbers)
+        {
+            var previousNumnerIndex = index - 2;
+            var previousNumber = fibonacciNumbers[previousNumnerIndex];
+            return previousNumber;
+        }
+
+        private static void AddOneToFibonacciSeqence(int maxListCount, ICollection<int> fibonacciNumbers)
+        {
+            var isMaxListCountGreaterThanZero = maxListCount > 0;
+
+            if (!fibonacciNumbers.Any() && isMaxListCountGreaterThanZero)
+            {
+                fibonacciNumbers.Add(1);
+            }
+        }
+
+        public List<int> GetEvenNumbers(IReadOnlyCollection<int> numbers)
+        {
+            var evenNumbers = new List<int>();
+
+            if (!numbers.Any()) return evenNumbers;
+
+            foreach (var number in numbers)
+            {
+                if (number % 2 == 0)
                 {
-                    evenFibonacciNumbers.Add(fibonacciNumber);
+                    evenNumbers.Add(number);
                 }
             }
 
-            return evenFibonacciNumbers;
+            return evenNumbers;
         }
 
     }

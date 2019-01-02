@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ProjectEuler.FibonacciNumbers;
+﻿using System.Linq;
 
-namespace ProjectEuler
+namespace ProjectEuler.FibonacciNumbers
 {
     public class EvenFibonacciNumbersSum
     {
@@ -16,7 +14,7 @@ namespace ProjectEuler
         public int Calculate(int maxNumber)
         {
             var fibonacciNumbers = _fibonacciNumberHandler.GetFibonacciNumbers(maxNumber);
-            var evenFibonacciNumbers = _fibonacciNumberHandler.GetEvenFibonacciNumbers(fibonacciNumbers);
+            var evenFibonacciNumbers = _fibonacciNumberHandler.GetEvenNumbers(fibonacciNumbers);
 
             var evenFibonacciNumbersSum = 0;
             if (evenFibonacciNumbers.Any())
