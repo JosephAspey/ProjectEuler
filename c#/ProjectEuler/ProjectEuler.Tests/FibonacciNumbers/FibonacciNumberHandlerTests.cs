@@ -18,8 +18,8 @@ namespace ProjectEuler.Tests.FibonacciNumbers
         public void ShouldReturnOne()
         {
             //When
-            const int maxListCount = 1;
-            var result = _sut.GetFibonacciNumbers(maxListCount);
+            const int maxListSize = 1;
+            var result = _sut.GetFibonacciNumbers(maxListSize);
 
             //Then
             const int expectedValue = 1;
@@ -31,8 +31,8 @@ namespace ProjectEuler.Tests.FibonacciNumbers
         {
 
             //When
-            const int maxListCount = 0;
-            var result = _sut.GetFibonacciNumbers(maxListCount);
+            const int maxListSize = 0;
+            var result = _sut.GetFibonacciNumbers(maxListSize);
 
             //Then
             Assert.Empty(result);
@@ -42,8 +42,8 @@ namespace ProjectEuler.Tests.FibonacciNumbers
         public void ShouldReturnOneAndTwo()
         {
             //When
-            const int maxListCount = 2;
-            var result = _sut.GetFibonacciNumbers(maxListCount);
+            const int maxListSize = 2;
+            var result = _sut.GetFibonacciNumbers(maxListSize);
 
             //Then
             Assert.Contains(1, result);
@@ -54,8 +54,8 @@ namespace ProjectEuler.Tests.FibonacciNumbers
         public void ShouldReturnASequnceThatAdditionsThePreviousTwoNumbersInTheCollection()
         {
             //When
-            const int maxListCount = 5;
-            var result = _sut.GetFibonacciNumbers(maxListCount);
+            const int maxListSize = 5;
+            var result = _sut.GetFibonacciNumbers(maxListSize);
 
             //Then
             Assert.Contains(1, result);

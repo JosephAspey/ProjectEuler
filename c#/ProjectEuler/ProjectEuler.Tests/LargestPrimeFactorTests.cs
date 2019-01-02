@@ -23,5 +23,14 @@ namespace ProjectEuler.Tests
             Assert.Equal(expectedResult, result);
         }
 
+        [Fact]
+        public void ShouldGetPrimeNumbers()
+        {
+            //Given
+
+            //When
+
+            //Then
+        }
     }
 }

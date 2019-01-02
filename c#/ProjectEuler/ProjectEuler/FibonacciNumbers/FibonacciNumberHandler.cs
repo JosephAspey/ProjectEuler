@@ -5,11 +5,11 @@ namespace ProjectEuler.FibonacciNumbers
 {
     public class FibonacciNumberHandler : IFibonacciNumberHandler
     {
-        public List<int> GetFibonacciNumbers(int maxListCount)
+        public List<int> GetFibonacciNumbers(int maxListSize)
         {
             var fibonacciNumbers = new List<int>();
 
-            for (var i = 1; i <= maxListCount; i++)
+            for (var i = 1; i <= maxListSize; i++)
             {
                 if (fibonacciNumbers.Any())
                 {
@@ -22,14 +22,18 @@ namespace ProjectEuler.FibonacciNumbers
                 }
                 else
                 {
-                    const int startingNumber = 1;
-                    fibonacciNumbers.Add(startingNumber);
+                    AddOneToStartFibonacciSequence(fibonacciNumbers);
                 }
             }
 
-            AddOneToFibonacciSeqence(maxListCount, fibonacciNumbers);
-
             return fibonacciNumbers;
+        }
+
+        private static int GetPreviousNumberInSequence(int index, IReadOnlyList<int> fibonacciNumbers)
+        {
+            var previousNumnerIndex = index - 2; 
+            var previousNumber = fibonacciNumbers[previousNumnerIndex];
+            return previousNumber;
         }
 
         private static int GetSecoundPreviousNumberInSequence(int index, IReadOnlyList<int> fibonacciNumbers)
@@ -44,21 +48,10 @@ namespace ProjectEuler.FibonacciNumbers
             return secondPreviousNumber;
         }
 
-        private static int GetPreviousNumberInSequence(int index, IReadOnlyList<int> fibonacciNumbers)
+        private static void AddOneToStartFibonacciSequence(ICollection<int> fibonacciNumbers)
         {
-            var previousNumnerIndex = index - 2;
-            var previousNumber = fibonacciNumbers[previousNumnerIndex];
-            return previousNumber;
-        }
-
-        private static void AddOneToFibonacciSeqence(int maxListCount, ICollection<int> fibonacciNumbers)
-        {
-            var isMaxListCountGreaterThanZero = maxListCount > 0;
-
-            if (!fibonacciNumbers.Any() && isMaxListCountGreaterThanZero)
-            {
-                fibonacciNumbers.Add(1);
-            }
+            const int startingNumber = 1;
+            fibonacciNumbers.Add(startingNumber);
         }
 
         public List<int> GetEvenNumbers(IReadOnlyCollection<int> numbers)
