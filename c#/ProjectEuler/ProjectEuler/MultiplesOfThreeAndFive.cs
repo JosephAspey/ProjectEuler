@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjectEuler
 {
@@ -24,5 +25,17 @@ namespace ProjectEuler
 
             return multiplesOfThreeAndFive;
         }
+
+        public static int SumOfMultipleOfThreeAndFive(int value)
+        {
+            var multipleOfThreeAndFive = GetMultipleOfThreeAndFive(value);
+
+            multipleOfThreeAndFive.Remove(value);
+
+            var sum = multipleOfThreeAndFive.Sum();
+
+            return sum;
+        }
+
     }
 }

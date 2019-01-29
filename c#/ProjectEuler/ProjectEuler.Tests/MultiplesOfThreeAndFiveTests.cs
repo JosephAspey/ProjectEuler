@@ -54,5 +54,17 @@ namespace ProjectEuler.UnitTests
             Assert.Equal(distinctAmount, result.Count);
         }
 
+        // Find the sum of all the multiples of 3 or 5 below 1000.
+        [Fact]
+        public void ShouldCalulcateTheSumOfMultplesOfThreeAndFive()
+        {
+            //When
+            var result = MultiplesOfThreeAndFive.SumOfMultipleOfThreeAndFive(1000);
+
+            //Then
+            const int expectedSum = 233168;
+            Assert.Equal(expectedSum, result);
+        }
+ 
     }
 }
