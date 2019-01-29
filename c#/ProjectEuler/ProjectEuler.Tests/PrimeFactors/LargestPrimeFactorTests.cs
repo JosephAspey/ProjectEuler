@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using ProjectEuler.PrimeFactors;
+using Xunit;
 
 namespace ProjectEuler.Tests
 {
@@ -17,39 +18,17 @@ namespace ProjectEuler.Tests
     public class LargestPrimeFactorTests
     {
         [Fact]
-        public void ShouldGetFactorsOf10()
+        public void ShouldReturn29AsTheHighestPrimeFactorOf13195()
         {
             //Given
             var sut = new LargestPrimeFactor();
 
             //When
-            const int numberToGetFactorsOf = 10;
-            var result = sut.GetFactors(numberToGetFactorsOf);
+            var result = sut.GetLargestPrimeFactor(13195);
 
             //Then
-            Assert.Contains(1, result);
-            Assert.Contains(2, result);
-            Assert.Contains(5, result);
-            Assert.Contains(10, result);
-            Assert.True(result.Count == 4);
-        }
-
-        [Fact]
-        public void ShouldGetFactorsOf15()
-        {
-            //Given
-            var sut = new LargestPrimeFactor();
-
-            //When
-            const int numberToGetFactorsOf = 15;
-            var result = sut.GetFactors(numberToGetFactorsOf);
-
-            //Then
-            Assert.Contains(1, result);
-            Assert.Contains(3, result);
-            Assert.Contains(5, result);
-            Assert.Contains(15, result);
-            Assert.True(result.Count == 4);
+            var expectedHightPrimeFactor = 29;
+            Assert.Equal(expectedHightPrimeFactor, result);
         }
 
     }
