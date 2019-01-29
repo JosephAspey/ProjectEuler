@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectEuler", "ProjectEuler\ProjectEuler.csproj", "{BADF8601-0726-4B76-8A43-2813734298C9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectEuler.Tests", "ProjectEuler.Tests\ProjectEuler.Tests.csproj", "{5441339E-8344-4758-A05E-D3C45588E714}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectEuler.UnitTests", "ProjectEuler.Tests\ProjectEuler.UnitTests.csproj", "{5441339E-8344-4758-A05E-D3C45588E714}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectEuler.IntegrationTests", "ProjectEuler.IntegrationTests\ProjectEuler.IntegrationTests.csproj", "{FD62E82B-4F63-431D-A0ED-97CDB7A668D8}"
 EndProject

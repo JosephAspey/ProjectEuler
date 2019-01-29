@@ -2,7 +2,7 @@
 using ProjectEuler.PrimeFactors;
 using Xunit;
 
-namespace ProjectEuler.Tests.PrimeFactors
+namespace ProjectEuler.UnitTests.PrimeFactors
 {
     public class PrimeFactorsRetrieverTests
     {

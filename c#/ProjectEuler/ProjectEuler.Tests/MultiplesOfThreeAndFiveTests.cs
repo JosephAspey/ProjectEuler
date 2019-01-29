@@ -1,7 +1,7 @@
 using System.Linq;
 using Xunit;
 
-namespace ProjectEuler.Tests
+namespace ProjectEuler.UnitTests
 {
     /// <summary>
     /// Problem 1

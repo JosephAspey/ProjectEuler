@@ -1,7 +1,7 @@
 ﻿using ProjectEuler.FibonacciNumbers;
 using Xunit;
 
-namespace ProjectEuler.Tests.FibonacciNumbers
+namespace ProjectEuler.UnitTests.FibonacciNumbers
 {
     /// <summary>
     /// Problem 2

@@ -3,7 +3,7 @@ using System.Linq;
 using ProjectEuler.FibonacciNumbers;
 using Xunit;
 
-namespace ProjectEuler.Tests.FibonacciNumbers
+namespace ProjectEuler.UnitTests.FibonacciNumbers
 {
     public class FibonacciNumberHandlerTests
     {
