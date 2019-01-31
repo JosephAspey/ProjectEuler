@@ -2,7 +2,7 @@
 
 namespace ProjectEuler.PalindromeProduct
 {
-    public class PalindromeProduct
+    public class PalindromeProduct : IPalindromeProduct
     {
         public bool IsPalindromeProduct(int number)
         {
