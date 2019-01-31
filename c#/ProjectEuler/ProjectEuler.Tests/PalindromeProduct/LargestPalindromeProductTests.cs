@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices.ComTypes;
-using Xunit;
+﻿using Xunit;
 
 namespace ProjectEuler.UnitTests.PalindromeProduct
 {
@@ -9,7 +8,6 @@ namespace ProjectEuler.UnitTests.PalindromeProduct
     /// </summary>
     public class LargestPalindromeProductTests
     {
-
         [Theory]
         [InlineData(1)]
         [InlineData(12)]

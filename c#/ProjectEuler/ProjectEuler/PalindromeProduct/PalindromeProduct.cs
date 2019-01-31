@@ -13,56 +13,67 @@ namespace ProjectEuler.PalindromeProduct
                 return false;
             }
 
-            //split in centre
-            var productCenterLenght = (float)numberLength / 2;
-
-            if (productCenterLenght >= 1)
+            var productCenterIndex = GetCentreIndexOfProduct(numberLength);
+            if (!(productCenterIndex >= 1))
             {
-                //reverse
-
-                //if odd length e.g. 3, 5 - round down and split
-                var isWholeNumber = Math.Abs(productCenterLenght % 1) < double.Epsilon;
-
-                string firstPartOfProduct = "";
-                string secondPartOfProduct = "";
-
-                if (!isWholeNumber)
-                {
-                    //round down to get first part - middle digit is disregarded
-                    var centerOfProductLengthRoundedDown = (int)Math.Floor(productCenterLenght);
-                    firstPartOfProduct = number.ToString().Substring(0 , centerOfProductLengthRoundedDown);
-                    
-                    //round up - to split and get after
-                    var centerOfProductRoundedUp = (int)Math.Ceiling(productCenterLenght);
-                    secondPartOfProduct = number.ToString().Substring(centerOfProductRoundedUp, centerOfProductLengthRoundedDown);
-                }
-                else
-                {
-                    firstPartOfProduct = number.ToString().Substring(0, (int)productCenterLenght);
-                    secondPartOfProduct =
-                        number.ToString().Substring((int) productCenterLenght, (int) productCenterLenght);
-                }
-               
-                //if string length > 2
-                var secondPartOfProductReversed = "";
-                if (secondPartOfProduct.Length >= 2)
-                {
-                    var arr = secondPartOfProduct.ToCharArray();
-                    Array.Reverse(arr);
-                    secondPartOfProductReversed = new string(arr);
-                }
-                else
-                {
-                    secondPartOfProductReversed = secondPartOfProduct;
-                }
-
-                if (firstPartOfProduct == secondPartOfProductReversed)
-                {
-                    return true;
-                }                        
+                return false;
             }
 
-            return false;
+            string firstPartOfProduct;
+            string secondPartOfProduct;
+            const int indexOfFirstPartProduct = 0;
+
+            if (!IsWholeNumber(productCenterIndex))
+            {
+                var centerOfProductIndexRoundedDown = RoundDownFloat(productCenterIndex);
+                firstPartOfProduct = GetSubStringOfProduct(number, indexOfFirstPartProduct, centerOfProductIndexRoundedDown);
+                    
+                var centerOfProductIndexRoundedUp = RoundUpFloat(productCenterIndex);
+                secondPartOfProduct = GetSubStringOfProduct(number, centerOfProductIndexRoundedUp, centerOfProductIndexRoundedDown);
+            }
+            else
+            {
+                firstPartOfProduct = GetSubStringOfProduct(number, indexOfFirstPartProduct, (int)productCenterIndex);
+                secondPartOfProduct = GetSubStringOfProduct(number, (int) productCenterIndex, (int) productCenterIndex);
+            }
+              
+            if (secondPartOfProduct.Length >= 2)
+            {
+                secondPartOfProduct = ReverseString(secondPartOfProduct);
+            }
+         
+            return firstPartOfProduct == secondPartOfProduct;
+        }
+
+        private static float GetCentreIndexOfProduct(int numberLength)
+        {
+            return (float)numberLength / 2;
+        }
+
+        private static bool IsWholeNumber(float productCenterIndex)
+        {
+            return Math.Abs(productCenterIndex % 1) < double.Epsilon;
+        }
+
+        private static int RoundDownFloat(float productCenterIndex)
+        {
+            return (int)Math.Floor(productCenterIndex);
+        }
+
+        private static int RoundUpFloat(float productCenterIndex)
+        {
+            return (int)Math.Ceiling(productCenterIndex);
+        }        
+        private static string GetSubStringOfProduct(int number, int startOfSubstring, int lengthOfSubstring)
+        {
+            return number.ToString().Substring(startOfSubstring, lengthOfSubstring);
+        }
+
+        private static string ReverseString(string secondPartOfProduct)
+        {
+            var arr = secondPartOfProduct.ToCharArray();
+            Array.Reverse(arr);
+            return new string(arr);
         }
     }
 }
