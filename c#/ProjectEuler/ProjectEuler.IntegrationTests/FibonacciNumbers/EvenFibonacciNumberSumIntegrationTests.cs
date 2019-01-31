@@ -30,5 +30,18 @@ namespace ProjectEuler.IntegrationTests.FibonacciNumbers
             const int expectResult = 44; //2 + 8 + 34
             Assert.Equal(expectResult, result);
         }
+
+        //Test to get the correct value for the Project Euler problem 2
+        [Fact]
+        public void ShouldCalculateTheValueOfEvenFibonacciNumbersWhoValueDoNotExceedFourMillion()
+        {
+            //When
+            const int maxListSize = 100;
+            var result = _sut.Calculate(maxListSize);
+
+            const int expectedResult = 4613732; //problem 2 answer
+            Assert.Equal(expectedResult, result);
+        }
+
     }
 }

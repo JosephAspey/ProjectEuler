@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using ProjectEuler.FibonacciNumbers;
+using System.Collections.Generic;
 using System.Linq;
-using ProjectEuler.FibonacciNumbers;
 using Xunit;
 
 namespace ProjectEuler.UnitTests.FibonacciNumbers
@@ -66,6 +66,22 @@ namespace ProjectEuler.UnitTests.FibonacciNumbers
         }
 
         [Fact]
+        public void MaxValueInFibonacciSequenceShouldNotExceedFourMillion()
+        {
+
+            //When
+            const int maxListSize = 6000000;
+            var result = _sut.GetFibonacciNumbers(maxListSize);
+
+            var fibonacciSequenceListSize = result.Count;
+            var lastItemIndex = result[fibonacciSequenceListSize - 1];
+
+            //Then
+            var isLessThanFourMillion = lastItemIndex < 4000000;
+            Assert.True(isLessThanFourMillion);
+        }
+
+        [Fact]
         public void ShouldGetEvenNumbers()
         {
             //When
@@ -106,6 +122,5 @@ namespace ProjectEuler.UnitTests.FibonacciNumbers
             Assert.DoesNotContain(1, result);
             Assert.DoesNotContain(3, result);
         }
-
     }
 }

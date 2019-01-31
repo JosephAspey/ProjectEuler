@@ -12,11 +12,17 @@ namespace ProjectEuler.FibonacciNumbers
             for (var i = 1; i <= maxListSize; i++)
             {
                 if (fibonacciNumbers.Any())
-                {
+                {    
                     var previousNumber = GetPreviousNumberInSequence(i, fibonacciNumbers);
+              
                     var secondPreviousNumber = GetSecoundPreviousNumberInSequence(i, fibonacciNumbers);
 
                     var fibonacciNumber = previousNumber + secondPreviousNumber;
+                    const int maxFibonacciSeqenceNumber = 4000000;
+                    if (fibonacciNumber >= maxFibonacciSeqenceNumber)
+                    {
+                        break;
+                    }
 
                     fibonacciNumbers.Add(fibonacciNumber);
                 }
