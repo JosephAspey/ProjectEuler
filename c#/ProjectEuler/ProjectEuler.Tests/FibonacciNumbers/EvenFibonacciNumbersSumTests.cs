@@ -1,4 +1,5 @@
-﻿using ProjectEuler.FibonacciNumbers;
+﻿using System.Collections.Generic;
+using ProjectEuler.FibonacciNumbers;
 using Xunit;
 
 namespace ProjectEuler.UnitTests.FibonacciNumbers
@@ -15,8 +16,9 @@ namespace ProjectEuler.UnitTests.FibonacciNumbers
 
         public EvenFibonacciNumbersSumTests()
         {
-            var fibonacciNumberHandler = new FibonacciNumberHandler();
-            _sut = new EvenFibonacciNumbersSum(fibonacciNumberHandler);
+            //Not testing a unit, has dependency
+            var fibonacciNumberHandlerFake = new FibonacciNumberHandlerFake();
+            _sut = new EvenFibonacciNumbersSum(fibonacciNumberHandlerFake);
         }
 
         [Fact]
@@ -28,6 +30,19 @@ namespace ProjectEuler.UnitTests.FibonacciNumbers
             //Then
             const int expectResult = 44; //2 + 8 + 34
             Assert.Equal(expectResult, result);
+        }
+
+        private class FibonacciNumberHandlerFake : IFibonacciNumberHandler
+        {
+            public List<int> GetFibonacciNumbers(int maxListSize)
+            {
+                return new List<int>{1, 1, 2, 3, 5, 8, 13, 21, 34};
+            }
+
+            public List<int> GetEvenNumbers(IReadOnlyCollection<int> numbers)
+            {
+                return new List<int>{2, 8, 34};
+            }
         }
 
     }
