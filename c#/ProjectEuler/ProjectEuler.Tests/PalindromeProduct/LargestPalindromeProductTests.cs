@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System.Runtime.InteropServices.ComTypes;
+using Xunit;
 
 namespace ProjectEuler.UnitTests.PalindromeProduct
 {
@@ -8,104 +9,42 @@ namespace ProjectEuler.UnitTests.PalindromeProduct
     /// </summary>
     public class LargestPalindromeProductTests
     {
-        //ToDo : Cleanup test to use constructor and pass in variables for same tests
-        [Fact]
-        public void ShouldReturnFalseWhenNumberIsNotPalindrome()
+
+        [Theory]
+        [InlineData(1)]
+        [InlineData(12)]
+        [InlineData(112)]
+        [InlineData(1212)]
+        [InlineData(12312)]
+        public void ShouldReturnFalseWhenNumberIsNotPalindrome(int number)
         {
             //Given
             var sut = new ProjectEuler.PalindromeProduct.PalindromeProduct();
 
             //When
-            const int number = 112;
+      
             var result = sut.IsPalindromeProduct(number);
 
             //Then
             Assert.False(result);
         }
 
-        [Fact]
-        public void ShouldReturnFalseWhenNumberIsNotPalindromeFor1212()
+        [Theory]
+        [InlineData(11)]
+        [InlineData(121)]
+        [InlineData(1221)]
+        [InlineData(12321)]
+        public void ShouldReturnTrueWhenNumerIsPalindrome(int number)
         {
             //Given
             var sut = new ProjectEuler.PalindromeProduct.PalindromeProduct();
 
             //When
-            const int number = 1212;
-            var result = sut.IsPalindromeProduct(number);
-
-            //Then
-            Assert.False(result);
-        }
-
-        [Fact]
-        public void ShouldReturnFalseWhenNumberIsNotPalindromeFor12312()
-        {
-            //Given
-            var sut = new ProjectEuler.PalindromeProduct.PalindromeProduct();
-
-            //When
-            const int number = 12312;
-            var result = sut.IsPalindromeProduct(number);
-
-            //Then
-            Assert.False(result);
-        }
-
-        [Fact]
-        public void ShouldReturnTrueWhenNumerIsPalindromeFor12321()
-        {
-            //Given
-            var sut = new ProjectEuler.PalindromeProduct.PalindromeProduct();
-
-            //When
-            const int number = 12321;
             var result = sut.IsPalindromeProduct(number);
 
             //Then
             Assert.True(result);
         }
-
-        [Fact]
-        public void ShouldReturnTrueWhenNumberIsPalindromFor121()
-        {
-            //Given
-            var sut = new ProjectEuler.PalindromeProduct.PalindromeProduct();
-
-            //When
-            const int number = 121;
-            var result = sut.IsPalindromeProduct(number);
-
-            //Then
-            Assert.True(result);
-        }
-
-        [Fact]
-        public void ShouldReturnTrueWhenNumberIsPalindromeFor1221()
-        {
-            //Given
-            var sut = new ProjectEuler.PalindromeProduct.PalindromeProduct();
-
-            //When
-            const int number = 1221;
-            var result = sut.IsPalindromeProduct(number);
-
-            //Then
-            Assert.True(result);
-        }
-
-        [Fact]
-        public void ShouldReturnFalseWhenSuppliedNumberIsOnlyOneDigit()
-        {
-            //Given
-            var sut = new ProjectEuler.PalindromeProduct.PalindromeProduct();
-
-            //When
-            const int number = 1;
-            var result = sut.IsPalindromeProduct(number);
-
-            //Then
-            Assert.False(result);
-        }
-
+  
     }
 }
