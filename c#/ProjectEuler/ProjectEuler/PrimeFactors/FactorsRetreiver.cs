@@ -2,7 +2,7 @@
 
 namespace ProjectEuler.PrimeFactors
 {
-    public class FactorsRetreiver
+    public class FactorsRetreiver : IFactorsRetreiver
     {
         public List<int> GetFactors(long value)
         {

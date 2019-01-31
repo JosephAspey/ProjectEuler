@@ -1,7 +1,9 @@
-﻿using ProjectEuler.PrimeFactors;
+﻿using System.Collections.Generic;
+using Moq;
+using ProjectEuler.PrimeFactors;
 using Xunit;
 
-namespace ProjectEuler.Tests
+namespace ProjectEuler.UnitTests.PrimeFactors
 {
     /// <summary>
     /// Problem 3
@@ -17,18 +19,38 @@ namespace ProjectEuler.Tests
     /// </summary>
     public class LargestPrimeFactorTests
     {
+
+        private readonly Mock<IFactorsRetreiver> _factorsRetreiverMock;
+        private readonly Mock<IPrimeFactorsRetriever> _primeFactorsRetrieverMock;
+
+        public LargestPrimeFactorTests()
+        {
+            _factorsRetreiverMock = new Mock<IFactorsRetreiver>();
+            _primeFactorsRetrieverMock = new Mock<IPrimeFactorsRetriever>();
+        }
+
         [Fact]
-        public void ShouldReturn29AsTheHighestPrimeFactorOf13195()
+        public void ShouldReturnTheLargestPrimeFactor()
         {
             //Given
-            var sut = new LargestPrimeFactor();
+            var getFactorsMockResult = new List<int>();
+            _factorsRetreiverMock.Setup(x => x.GetFactors(It.IsAny<int>())).Returns(getFactorsMockResult);
+
+            var getPrimeFactorsMockResult = new List<int>
+            {
+                5, 7, 13, 29
+            };
+            _primeFactorsRetrieverMock.Setup(x => x.GetPrimeFactors(It.IsAny<List<int>>()))
+                .Returns(getPrimeFactorsMockResult);
+
+            var sut = new LargestPrimeFactor(_factorsRetreiverMock.Object, _primeFactorsRetrieverMock.Object);
 
             //When
             var result = sut.GetLargestPrimeFactor(13195);
 
             //Then
-            var expectedHightPrimeFactor = 29;
-            Assert.Equal(expectedHightPrimeFactor, result);
+            const int expectedHighestPrimeFactor = 29;
+            Assert.Equal(expectedHighestPrimeFactor, result);
         }
 
     }

@@ -3,18 +3,22 @@
 namespace ProjectEuler.PrimeFactors
 {
     public class LargestPrimeFactor
-    { 
+    {
+        private readonly IFactorsRetreiver _factorsRetreiver;
+        private readonly IPrimeFactorsRetriever _primeFactorsRetriever;
 
-        //ToDo: new is glue
+        public LargestPrimeFactor(IFactorsRetreiver factorsRetreiver, IPrimeFactorsRetriever primeFactorsRetriever)
+        {
+            _factorsRetreiver = factorsRetreiver;
+            _primeFactorsRetriever = primeFactorsRetriever;
+        }     
+
         public int GetLargestPrimeFactor(long value)
         {
-            var factorsRetreiver = new FactorsRetreiver();
-            var factors = factorsRetreiver.GetFactors(value);
 
-            //get prime factors from factor
-            
-            var primeFactorsRetriever = new PrimeFactorsRetriever();
-            var primeFators = primeFactorsRetriever.GetPrimeFactors(factors);
+            var factors = _factorsRetreiver.GetFactors(value);
+     
+            var primeFators = _primeFactorsRetriever.GetPrimeFactors(factors);
 
             var highestPrimeFactor = primeFators.Max();
 

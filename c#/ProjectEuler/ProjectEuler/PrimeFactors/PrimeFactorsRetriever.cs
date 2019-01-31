@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProjectEuler.PrimeFactors
 {
-    public class PrimeFactorsRetriever
+    public class PrimeFactorsRetriever : IPrimeFactorsRetriever
     {
         public List<int> GetPrimeFactors(IEnumerable<int> factors)
         {
@@ -20,6 +20,7 @@ namespace ProjectEuler.PrimeFactors
             return primeFactors;
         }
 
+        //Extract to class and test logic
         private static bool IsPrimeNumber(int number)
         {
             if (number <= 1)
