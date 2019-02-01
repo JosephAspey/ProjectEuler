@@ -31,6 +31,7 @@ namespace ProjectEuler.UnitTests.PalindromeProduct
         [InlineData(121)]
         [InlineData(1221)]
         [InlineData(12321)]
+        [InlineData(906609)]
         public void ShouldReturnTrueWhenNumerIsPalindrome(int number)
         {
             //When

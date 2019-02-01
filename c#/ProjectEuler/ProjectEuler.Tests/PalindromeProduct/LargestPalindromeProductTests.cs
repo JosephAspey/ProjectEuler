@@ -13,22 +13,36 @@ namespace ProjectEuler.UnitTests.PalindromeProduct
 
         private readonly Mock<IPalindromeProduct> _palindromeProductMock;
 
+        private readonly LargestPalindromeProduct _sut;
+
         public LargestPalindromeProductTests()
         {
             _palindromeProductMock = new Mock<IPalindromeProduct>();
+            _sut = new LargestPalindromeProduct(_palindromeProductMock.Object);
         }
 
         [Fact]
         public void ShouldCallPalindromeProductToCheckIfAProductIsPalindrome()
         {
-            //Given
-            var sut = new LargestPalindromeProduct(_palindromeProductMock.Object);
-
             //When
-            sut.GetLargestPalindromeProductFromThreeDigitNumbers();
+            _sut.GetLargestPalindromeFromTheProductOfTwoThreeDigitNumbers();
 
             //Then
-            _palindromeProductMock.Verify(x => x.IsPalindromeProduct(It.IsAny<int>()), Times.Once);
+            _palindromeProductMock.Verify(x => x.IsPalindromeProduct(It.IsAny<int>()), Times.AtLeastOnce);
+        }
+
+        [Fact]
+        public void ShouldGetTheLargestPalindromeMadeFromTheProductOfTwoThreeDigitNumbers()
+        {
+            //Given
+            _palindromeProductMock.Setup(x => x.IsPalindromeProduct(906609)).Returns(true); 
+
+            //When
+            var result = _sut.GetLargestPalindromeFromTheProductOfTwoThreeDigitNumbers();
+
+            //Then
+            const int expectedResult = 906609; //993 * 913
+            Assert.Equal(expectedResult, result);
         }
 
     }
