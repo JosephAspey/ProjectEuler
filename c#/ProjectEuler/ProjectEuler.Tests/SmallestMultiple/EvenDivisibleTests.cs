@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using ProjectEuler.SmallestMultiple;
+using Xunit;
 
 namespace ProjectEuler.UnitTests
 {
@@ -7,13 +8,13 @@ namespace ProjectEuler.UnitTests
     /// 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
     /// What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
     /// </summary>
-    public class SmallestMultipleTests
+    public class EventDivisibleTests
     {
-        private readonly SmallestMultiple _sut;
+        private readonly EvenDivisible _sut;
 
-        public SmallestMultipleTests()
+        public EventDivisibleTests()
         {
-            _sut = new SmallestMultiple();
+            _sut = new EvenDivisible();
         }
 
         [Fact]
@@ -63,11 +64,10 @@ namespace ProjectEuler.UnitTests
             const int numberToDivide = 2520;
 
             //When
-            var reuslt = _sut.IsEvenlyDivisibleWithoutAnyRemainder(numberToDivide, numberToDivideBy);
+            var result = _sut.IsEvenlyDivisibleWithoutAnyRemainder(numberToDivide, numberToDivideBy);
 
             //Then
-            Assert.True(reuslt);
+            Assert.True(result);
         }
-
     }
 }

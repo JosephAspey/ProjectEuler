@@ -1,6 +1,6 @@
-﻿namespace ProjectEuler
+﻿namespace ProjectEuler.SmallestMultiple
 {
-    public class SmallestMultiple
+    public class EvenDivisible
     {
         public bool IsEvenlyDivisibleWithoutAnyRemainder(int numberToDivide, int numberToDivideBy)
         {
